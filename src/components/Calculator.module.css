@@ -1,0 +1,133 @@
+.calculator-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    min-height: 500px;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 2mm ridge #4cc9f0;
+    box-shadow: 0px 10px 15px black;
+    animation: calculator .6s ease-in;
+}
+@keyframes calculator {
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1, 1);
+      }
+  }
+.grid{
+    background-color: LightGray;
+    height: 100%;
+    min-height: 500px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 0px;
+}
+.display1{
+    background-color: black;
+    grid-area: 1/1/1/5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: end;
+    padding-right: 15px;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Noto Sans JP';
+    border-bottom: thick double #32a1ce;
+}
+.display2{
+    background-color: black;
+    color: orange;
+    font-size: 1.5rem;
+    grid-area: 2/1/2/5;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 15px;
+}
+.clear{
+    grid-area: 3/1/3/4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.division{
+    grid-area: 3/4/3/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.multiplication{
+    grid-area: 4/4/4/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.substraction{
+    grid-area: 5/4/5/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addition{
+    grid-area: 6/4/6/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.equal{
+    grid-area: 7/4/7/5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.numButton{
+    width: 100%;
+    height: 100%;
+    font-weight: bolder;
+    background-color: #457b9d;
+    font-family: 'Noto Sans JP';
+    border: .1rem solid;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.numButton:hover{
+    opacity: .9;
+    color: white;
+}
+.numButton:focus {
+    opacity: .6;
+    color: white;
+  }
+.nonNumButton{
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    font-weight: bolder;
+    font-family: 'Noto Sans JP';
+    background-color: #4895ef;
+    border: .1rem solid;
+    font-size: 1.5rem;
+}
+.nonNumButton:hover{
+    opacity: .9;
+    color: #f1faee;
+}
+.nonNumButton:focus {
+    opacity: .6;
+    color: white;
+  }

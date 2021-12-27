@@ -1,0 +1,26 @@
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+    animation: footer 2.5s ease-in;
+}
+@keyframes footer {
+    0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+  }
+.footer h3{
+    margin-bottom: 0;
+    font-size: 1.5rem;
+    color: #48cae4;
+}
+.footer p{
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    color: #00b4d8;
+}
