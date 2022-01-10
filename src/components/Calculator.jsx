@@ -8,33 +8,45 @@ function Calculator() {
 
   const ops = ["*", "/", "+", "-"];
 
+  const insertDecimal = () => {
+    if (!/\./.test(currentNum)) {
+      setCurrentNum(currentNum + ".");
+    }
+  };
+  const clear = () => {
+    if (currentNum === "") {
+      return;
+    }
+    setCurrentNum("");
+    setResult("");
+  };
+
   const updateCalc = (value) => {
-    const arrValue = currentNum.split(" ");
-    const lastValueHasDecimal =
-      arrValue[arrValue.length - 1].indexOf(".") > -1 && value === ".";
     if (
       (ops.includes(value) && ops.includes(currentNum.slice(-1))) ||
-      (ops.includes(value) && currentNum === "") ||
-      lastValueHasDecimal
+      (ops.includes(value) && currentNum === "")
     ) {
       return;
     }
-    if (currentNum.length>14) {
-      return (setCurrentNum("Limit exceeded"), setResult('Limit exceeded'))
+    if (currentNum.length > 14) {
+      return setCurrentNum("Limit exceeded"), setResult("Limit exceeded");
+    }
+    if (value === "CE") {
+      clear();
+    }
+    if (value === ".") {
+      insertDecimal();
     }
     try {
       setCurrentNum(currentNum + value);
       if (!ops.includes(value)) {
-        setResult(eval(currentNum + value).toString());
+        setResult(Number.parseFloat(eval(currentNum + value)).toString());
         setCurrentNum(currentNum + value);
       }
     } catch (error) {
-      setCurrentNum('')
-      setResult('')
+      setCurrentNum("");
+      setResult("");
     }
-    
-
-    
   };
 
   const calculated = () => {
@@ -42,21 +54,12 @@ function Calculator() {
       return;
     }
     try {
-      setCurrentNum(eval(currentNum).toString());
+      setCurrentNum(Number.parseFloat(eval(currentNum)).toFixed(4).toString());
     } catch (error) {
       alert(error.message);
       setCurrentNum("NaN");
       setResult("NaN");
     }
-  };
-
-  const clear = () => {
-    if (currentNum === "") {
-      return;
-    }
-
-    setCurrentNum("");
-    setResult("");
   };
 
   const negativeNum = (value) => {
@@ -74,7 +77,10 @@ function Calculator() {
         <div className={classes.display1}>{currentNum || "0"}</div>
         <div className={classes.display2}>{result || "0"}</div>
         <div className={classes.clear}>
-          <button onClick={clear} className={classes.nonNumButton}>
+          <button
+            onClick={() => updateCalc("CE")}
+            className={classes.nonNumButton}
+          >
             CE
           </button>
         </div>
