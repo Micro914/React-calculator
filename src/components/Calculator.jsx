@@ -54,7 +54,7 @@ function Calculator() {
       return;
     }
     try {
-      setCurrentNum(Number.parseFloat(eval(currentNum)).toFixed(4).toString());
+      setCurrentNum(Number.parseFloat(eval(currentNum)).toFixed(2).toString());
     } catch (error) {
       alert(error.message);
       setCurrentNum("NaN");
